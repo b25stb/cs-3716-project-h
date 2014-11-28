@@ -15,6 +15,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Scanner;
+/**
+ * The function for input and process skill name 
+ * and link them to InitiatorInterface
+ * it's a pop window in main GUI
+ */
 
 public class SkillDialog extends JDialog {
 
