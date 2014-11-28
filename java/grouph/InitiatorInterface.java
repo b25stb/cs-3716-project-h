@@ -80,7 +80,7 @@ public class InitiatorInterface extends JFrame {
 				skill.setVisible(true);
 				skillList = skill.getSkills();
 				skill.dispose();
-				System.out.println(skillList.get(0)+"\n"+skillList.get(1));
+				//System.out.println(skillList.get(0)+"\n"+skillList.get(1));
 			}
 		});
 		btnSkills.setBounds(33, 78, 246, 23);
@@ -94,7 +94,7 @@ public class InitiatorInterface extends JFrame {
 				gd.setVisible(true);
 				courseList = gd.getCourses();
 				gd.dispose();
-				System.out.println(courseList.get(0)+"\n"+courseList.get(1));
+				//TestingSystem.out.println(courseList.get(0)+"\n"+courseList.get(1));
 			}
 		});
 		btnGrades.setBounds(33, 112, 246, 23);
@@ -128,29 +128,72 @@ public class InitiatorInterface extends JFrame {
 				String cid = txtCourseID.getText();
 				int day = Integer.parseInt(txtDd.getText());
 				String month="Error";
-				switch(Integer.parseInt(txtMonth.getText()))
+				switch( Integer.parseInt(txtMonth.getText() ) )
 				{
 				case 1 :month = "January";
+				break;
 				case 2 :month = "Febuary";
+				break;
 				case 3 :month = "March";
+				break;
 				case 4 :month = "April";
+				break;
 				case 5 :month = "May";
+				break;
 				case 6 :month = "June";
+				break;
 				case 7 :month = "July";
+				break;
 				case 8 :month = "August";
+				break;
 				case 9 :month = "September";
+				break;
 				case 10:month = "October";
+				break;
 				case 11:month = "November";
+				break;
 				case 12:month = "December";
+				break;
 				}
 				
 				//Just for testing
-				Course course = new Course("ID");
+				Course course = new Course(cid);
 				int classSize = 20;
 				//
 				ConfirmInputDialog ci = new ConfirmInputDialog();
 				ci.setValues(day, course, month, size,classSize);
+				ci.update();
 				ci.setVisible(true);
+				boolean correct = ci.isCorrect();
+				ci.dispose();
+				System.out.println(correct);
+				if(correct)
+				{
+					ArrayList<String> input = new ArrayList<String>(0);
+					input.add(cid);
+					input.add(""+size);
+					input.add(month);
+					input.add(""+day);
+					input.add(":");
+					for(String s : skillList)
+					{
+						if(!s.equals(""))
+						{
+							input.add(s);
+						}
+					}
+					input.add(":");
+					for(String s:courseList)
+					{
+						if(!s.equals(""))
+						{
+							input.add(s);
+						}
+					}
+					
+					MakeFileProfReq.makeFile("c://alpha/profreqs.csv",input);
+					dispose();
+				}
 				
 			}
 		});

@@ -37,10 +37,21 @@ public class ConfirmInputDialog extends JDialog {
 	 * Create the dialog.
 	 */
 	boolean correct=false;
+	JTextArea txtConfirmArea = new JTextArea();
 	
 	boolean isCorrect()
 	{
 		return correct;
+	}
+	
+	void update()
+	{
+		int gn = classSize/size;
+		String output = "You have entered the following:\nClass:";
+		output = output+ course.getCRN()+"\nGroup Size:"+size;
+		output = output + "\nNumber of Groups:"+ gn+"\nDeadLine:";
+		output = output + month+ " "+ day+"\n\nIs this Correct?";
+		txtConfirmArea.setText(output);
 	}
 	
 	void setValues(int d,Course c,String m,int s,int cS)
@@ -66,12 +77,11 @@ public class ConfirmInputDialog extends JDialog {
 			contentPanel.add(lblPleaseConfirmThe);
 		}
 		{
-			JTextArea txtConfirmArea = new JTextArea();
+			//JTextArea txtConfirmArea = new JTextArea();
 			txtConfirmArea.setEditable(false);
 			txtConfirmArea.setBounds(10, 30, 292, 162);
 			contentPanel.add(txtConfirmArea);
-			String output = "You have entered the following:\n";
-			output = output+
+
 		}
 		{
 			JPanel buttonPane = new JPanel();
@@ -82,7 +92,8 @@ public class ConfirmInputDialog extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) 
 					{
-						
+						correct = true;
+						setVisible(false);
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -94,6 +105,7 @@ public class ConfirmInputDialog extends JDialog {
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) 
 					{
+						correct =false;
 						dispose();
 					}
 				});
