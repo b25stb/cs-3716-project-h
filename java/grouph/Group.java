@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package grouph;
 
 import java.util.ArrayList;
@@ -19,18 +22,18 @@ public class Group
 	
 	public Group()
 	{
-		groupMems = new ArrayList<Student>( 0 );
+		groupMems = new ArrayList<Student>(0);
 	}
 	/*
 	 * Makes a group that cannot exceed a certain size
 	 * @param size the max size of a group
 	 * @param id The id to describe this group
 	 */
-	public Group( int size, String id )
+	public Group(int size,String id)
 	{
 		this.size=size;
 		this.id=id;
-		groupMems = new ArrayList<Student>( 0 );
+		groupMems = new ArrayList<Student>(0);
 	}
 	
 	/*
@@ -39,7 +42,7 @@ public class Group
 	 */
 	public boolean isFull()
 	{
-		return ( this.size == groupMems.size() );
+		return (this.size==groupMems.size());
 	}
 	
 	/* 
@@ -55,18 +58,20 @@ public class Group
 	 * Finds if a student is in a group
 	 * @return Is student in group
 	 */
-	public boolean isInGroup( Student stu )
+	public boolean isInGroup(Student stu)
 	{
-		return groupMems.contains( stu );
+		return groupMems.contains(stu);
 	}
 	
 	/*
 	 * Adds a student to a group if there is room
 	 * @param stu The student we attempt to add to add to a group
 	 */
-	public void add( Student stu ) {
-		if( !this.isFull() ) {
-			groupMems.add( stu );
+	public void add(Student stu)
+	{
+		if(!this.isFull())
+		{
+			groupMems.add(stu);
 		}
 	}
 	
@@ -74,9 +79,11 @@ public class Group
 	 * Removes a student from a group if they are in it
 	 * @param The student to be removed
 	 */
-	public void remove( Student stu ) {
-		if( this.isInGroup( stu ) ) {
-			groupMems.remove( stu );
+	public void remove(Student stu)
+	{
+		if(this.isInGroup(stu))
+		{
+			groupMems.remove(stu);
 		}
 	}
 	
@@ -84,22 +91,20 @@ public class Group
 	 * This Will return an arraylist of the members in a group
 	 * @return The group
 	 */
-	public Group getGroup( String id ) {
-		for( int x = controller.groupList.size(); x == 0; x-- ){
-			Group grp = (controller.groupList.get(x));
-			
-			if( grp.id == id ) {
+	public Group getGroup(String id)
+	{
+		for ( int x = controller.groupList.size(); x==0; x--){			Group grp = (controller.groupList.get(x));
+			if(grp.id==id){
 				return grp;
 			}
 		}
-		
-		return null;
+	return null;
 	}
 	/*
 	 * Sets the id of a group
 	 * @param id The new id for the group
 	 */
-	public void setId( String id ) {
+	public void setId (String id) {
 		this.id = id;
 	}
 	
@@ -107,7 +112,7 @@ public class Group
 	 * Gets the id of a group
 	 * @return The group id
 	 */
-	public String getId() {
+	public String getId () {
 		return this.id;
 	}
 	
@@ -118,10 +123,9 @@ public class Group
 	public String groupToString() {
 		String out="";
 		
-		for( Student student: this.groupMems ) {
-			out = out + student.getName() + ", ";
+		for(Student student: this.groupMems) {
+			out = out + student.name + ", ";
 		}
-		
 		return out;
 	}
 	
@@ -129,7 +133,8 @@ public class Group
 	 * Sets the max size of the groups
 	 * @param size the size of the groups
 	 */
-	public void setSize( int size ) {
+	void setSize(int size)
+	{
 		this.size=size;
 	}
 	

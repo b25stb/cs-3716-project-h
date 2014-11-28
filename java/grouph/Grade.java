@@ -9,7 +9,7 @@ public class Grade
 	String id;
 	//Mark is a number representation of the letter grade
 	int mark;
-	private Controller controller = new Controller();
+	//private Controller controller = new Controller();
 	//Empty Constructor
 	public Grade()
 	{}
@@ -19,7 +19,8 @@ public class Grade
 	 * @param id The id to represent the course
 	 * @param grade The mark achieved in the course
 	 */
-	public Grade( String id, int mark ) {
+	public Grade(String id,int mark)
+	{
 		this.id=id;
 		this.mark=mark;
 	}
@@ -28,7 +29,8 @@ public class Grade
 	 * Gets the id of a course
 	 * @return The id of the course from this grade
 	 */
-	public String getCourseID() {
+	String getCourseID()
+	{
 		return id;
 	}
 	
@@ -36,7 +38,8 @@ public class Grade
 	 * Gets the Mark Achieved in the course
 	 * @return The Mark acheived in this Course
 	 */
-	public int getMark() {
+	int getMark()
+	{
 		return mark;
 	}
 	
@@ -44,7 +47,8 @@ public class Grade
 	 * Set the course id
 	 * @param id the ID of the new course
 	 */
-	public void setCourse( String id ) {
+	void setCourse(String id)
+	{
 		this.id=id;
 	}
 	
@@ -52,7 +56,8 @@ public class Grade
 	 * Sets the new mark for the course
 	 * @param mark The new mark for the course
 	 */
-	public void setGrade( int mark ) {
+	void setGrade(int mark)
+	{
 		this.mark=mark;
 	}
 	
@@ -60,18 +65,17 @@ public class Grade
 	 * Gets the letter grade associated with the Mark
 	 * @return The Letter grade for the course
 	 */
-	public String markToString() {
-		switch(this.mark) {
-		
-			case 1: return "F";
-			case 2: return "D";
-			case 3: return "C";
-			case 4: return "B";
-			case 5: return "A";
-			
+	String markToString()
+	{
+		switch(this.mark)
+		{
+		case 1: return "F";
+		case 2: return "D";
+		case 3: return "C";
+		case 4: return "B";
+		case 5: return "A";
 		}
-		
-		return "ERROR GRADE OUT OF RANGE";
+		return"ERROR GRADE OUT OF RANGE";
 	}
 	
 }

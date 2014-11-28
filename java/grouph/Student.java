@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package grouph;
 
 /**
@@ -5,52 +8,78 @@ package grouph;
  * @author stb
  *
  */
-public class Student {
-	private Controller controller = new Controller();
-	private String name;
-	private String id;
-	private double gpa;
-
+public class Student
+{
+	//private Controller controller = new Controller();
+	String name;
+	String id;
+	StuProp params;
+	//Moved to StuProps double gpa;
 	/*
-	 * Makes a student object with a name, an id, and GPA
+	 * Empty Constructor
+	 */
+	public Student()
+	{
+		params = new StuProp();
+	}
+	
+	/*
+	 * Makes a student object with a name and an id
 	 * @param name
 	 * @param id The unique id
-	 * @param gpa 
-	 
-	public Student( String name, String id, double gpa ) {
+	 */
+	public Student(String name,String id, double gpa) {
 		this.name = name;
 		this.id = id;
-		this.gpa = gpa;
+		params = new StuProp();
+		//this.gpa = gpa;
 	}
-	*/
 	
-	// gets the students name
-	public String getName() {
+	/*
+	 * makes a student with a name,an id and a set of parameters
+	 * @param name 
+	 * @param id
+	 * @param params The parameters we will be using to match students
+	 */
+	public Student(String name,String id,StuProp params)
+	{
+		this.name=name;
+		this.id=id;
+		this.params=params;
+	}
+	/*
+	 * Gets the students name
+	 * @return The given name
+	 */
+	String getName()
+	{
 		return name;
 	}
 	
-	// gets the students ID
-	public String getId() {
+	/*
+	 * Gets the students id
+	 * @return The id of the student
+	 */
+	String getId()
+	{
 		return id;
 	}
 	
-	// gets the students GPA
-	public double getGPA() {
-		return gpa;
+	/*
+	 * Returns the parameters used for matching 
+	 * @return the properties of this student used in matching
+	 */
+	StuProp getProperties()
+	{
+		return params;
 	}
 	
-	// sets the students name
-	public void setName( String n ) {
-		this.name = n;
-	}
-	
-	// sets the students ID
-	public void setId( String i ) {
-		this.id = i;
-	}
-	
-	// sets the students GPA
-	public void setGPA( double g ) {
-		this.gpa = g;
+	/*
+	 * Updates the parameters this student holds
+	 * @param params The new set of properties to match student
+	 */
+	void setProperties(StuProp params)
+	{
+		this.params = params;
 	}
 }
