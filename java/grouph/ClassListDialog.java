@@ -13,6 +13,11 @@ import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * Interface of Class list Details
+ *
+ */
+
 public class ClassListDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
