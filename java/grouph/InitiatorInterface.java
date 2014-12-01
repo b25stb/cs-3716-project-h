@@ -15,6 +15,13 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+	/**
+	 * Entrance GUI for instructor, to decide course ID and group size
+	 * Call the skill and courses to consider input interface
+	 * @arg course ID
+	 * @arg group size
+	 */
+	 
 public class InitiatorInterface extends JFrame {
 
 	private JPanel contentPane;
