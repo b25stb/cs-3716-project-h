@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+<<<<<<< HEAD
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
@@ -16,13 +17,21 @@ import java.awt.event.ActionEvent;
 	 * The class pop a window let user to confirm the Input infomation
 	 */
 	 
+=======
+
+>>>>>>> Shane
 public class ConfirmInputDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	String month="";
+<<<<<<< HEAD
 	int day,size,classSize;
 	Course course;
 	//InitiatorInterface ui;
+=======
+	int day,size;
+	Course course;
+>>>>>>> Shane
 
 	/**
 	 * Launch the application.
@@ -41,6 +50,7 @@ public class ConfirmInputDialog extends JDialog {
 	 * Create the dialog.
 	 */
 	boolean correct=false;
+<<<<<<< HEAD
 	JTextArea txtConfirmArea = new JTextArea();
 	
 	boolean isCorrect()
@@ -61,6 +71,10 @@ public class ConfirmInputDialog extends JDialog {
 	void setValues(int d,Course c,String m,int s,int cS)
 	{
 		classSize=cS;
+=======
+	void setValues(int d,Course c,String m,int s)
+	{
+>>>>>>> Shane
 		month=m;
 		course=c;
 		day=d;
@@ -68,6 +82,7 @@ public class ConfirmInputDialog extends JDialog {
 	}
 	
 	public ConfirmInputDialog() {
+<<<<<<< HEAD
 		setTitle("Confirm Details");
 		setModal(true);
 		setBounds(100, 100, 328, 300);
@@ -87,12 +102,21 @@ public class ConfirmInputDialog extends JDialog {
 			contentPanel.add(txtConfirmArea);
 
 		}
+=======
+		setModal(true);
+		setBounds(100, 100, 450, 300);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setLayout(new FlowLayout());
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+>>>>>>> Shane
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+<<<<<<< HEAD
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) 
 					{
@@ -100,12 +124,15 @@ public class ConfirmInputDialog extends JDialog {
 						setVisible(false);
 					}
 				});
+=======
+>>>>>>> Shane
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+<<<<<<< HEAD
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) 
 					{
@@ -113,6 +140,8 @@ public class ConfirmInputDialog extends JDialog {
 						dispose();
 					}
 				});
+=======
+>>>>>>> Shane
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}

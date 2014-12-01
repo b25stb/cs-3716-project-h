@@ -20,7 +20,11 @@ public class Course
 	Prof prof;
 	//Days the course takes place
 	//mon-fri 24 hours a day
+<<<<<<< HEAD
 	Schedule schedule = new Schedule(5,16);
+=======
+	Schedule schedule = new Schedule(5,24);
+>>>>>>> Shane
 	
 	/*
 	 * Makes a empty course
@@ -162,6 +166,7 @@ public class Course
 	{
 		this.schedule = schedule;
 	}
+<<<<<<< HEAD
 	
 	/*
 	 * Gets the size of the class
@@ -171,4 +176,6 @@ public class Course
 	{
 		return classList.size();
 	}
+=======
+>>>>>>> Shane
 }

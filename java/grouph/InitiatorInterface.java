@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+<<<<<<< HEAD
 	/**
 	 * Entrance GUI for instructor, to decide course ID and group size
 	 * Call the skill and courses to consider input interface
@@ -22,6 +23,8 @@ import java.awt.event.ActionEvent;
 	 * @arg group size
 	 */
 	 
+=======
+>>>>>>> Shane
 public class InitiatorInterface extends JFrame {
 
 	private JPanel contentPane;
@@ -31,7 +34,10 @@ public class InitiatorInterface extends JFrame {
 	private JTextField txtDd;
 	ArrayList<String> skillList = new ArrayList<String>(0);
 	ArrayList<String> courseList = new ArrayList<String>(0);
+<<<<<<< HEAD
 	//SkillDialog skill = new SkillDialog();
+=======
+>>>>>>> Shane
 
 
 	/**
@@ -88,7 +94,11 @@ public class InitiatorInterface extends JFrame {
 				skill.setVisible(true);
 				skillList = skill.getSkills();
 				skill.dispose();
+<<<<<<< HEAD
 				//System.out.println(skillList.get(0)+"\n"+skillList.get(1));
+=======
+				System.out.println(skillList.get(0)+"\n"+skillList.get(1));
+>>>>>>> Shane
 			}
 		});
 		btnSkills.setBounds(33, 78, 246, 23);
@@ -102,7 +112,11 @@ public class InitiatorInterface extends JFrame {
 				gd.setVisible(true);
 				courseList = gd.getCourses();
 				gd.dispose();
+<<<<<<< HEAD
 				//TestingSystem.out.println(courseList.get(0)+"\n"+courseList.get(1));
+=======
+				System.out.println(courseList.get(0)+"\n"+courseList.get(1));
+>>>>>>> Shane
 			}
 		});
 		btnGrades.setBounds(33, 112, 246, 23);
@@ -132,6 +146,7 @@ public class InitiatorInterface extends JFrame {
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
+<<<<<<< HEAD
 				//No class id input
 				if(txtCourseID.getText().equals(""))
 				{
@@ -251,6 +266,31 @@ public class InitiatorInterface extends JFrame {
 						}
 					}
 				}
+=======
+				int size =  Integer.parseInt(txtSize.getText());
+				String cid = txtCourseID.getText();
+				int day = Integer.parseInt(txtDd.getText());
+				String month="Error";
+				switch(Integer.parseInt(txtMonth.getText()))
+				{
+				case 1 :month = "January";
+				case 2 :month = "Febuary";
+				case 3 :month = "March";
+				case 4 :month = "April";
+				case 5 :month = "May";
+				case 6 :month = "June";
+				case 7 :month = "July";
+				case 8 :month = "August";
+				case 9 :month = "September";
+				case 10:month = "October";
+				case 11:month = "November";
+				case 12:month = "December";
+				}
+				
+				//ConfirmInputDialog ci = new ConfirmInputDialog();
+				//ci.setValues(day, course, month, size);
+				
+>>>>>>> Shane
 			}
 		});
 		btnContinue.setBounds(37, 177, 242, 23);
