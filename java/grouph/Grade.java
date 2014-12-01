@@ -1,9 +1,8 @@
 package grouph;
-/**
- * Grade is comtbprised of a course and a mark.
- *
- */
 
+/*
+ * Grade is comtbprised of a course and a mark.
+ */
 public class Grade 
 {
 	//Id is the course

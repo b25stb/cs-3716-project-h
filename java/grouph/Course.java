@@ -162,4 +162,13 @@ public class Course
 	{
 		this.schedule = schedule;
 	}
+	
+	/*
+	 * Gets the size of the class
+	 * @return The class size
+	 */
+	int size()
+	{
+		return classList.size();
+	}
 }

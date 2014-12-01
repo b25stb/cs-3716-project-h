@@ -40,10 +40,6 @@ public class MakeFileProfReq
 		    	else
 		    	{
 		    		writer.append(s);
-		    		if(input.size()>count)
-		    		{
-		    			//writer.append(",");
-		    		}
 		    	}
 		    }
 	 
