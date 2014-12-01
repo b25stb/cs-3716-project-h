@@ -20,7 +20,7 @@ public class Course
 	Prof prof;
 	//Days the course takes place
 	//mon-fri 24 hours a day
-	Schedule schedule = new Schedule(5,24);
+	Schedule schedule = new Schedule(5,16);
 	
 	/*
 	 * Makes a empty course
@@ -161,5 +161,14 @@ public class Course
 	void setSchedule(Schedule schedule)
 	{
 		this.schedule = schedule;
+	}
+	
+	/*
+	 * Gets the size of the class
+	 * @return The class size
+	 */
+	int size()
+	{
+		return classList.size();
 	}
 }

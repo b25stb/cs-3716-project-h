@@ -24,6 +24,7 @@ public class InitiatorInterface extends JFrame {
 	private JTextField txtDd;
 	ArrayList<String> skillList = new ArrayList<String>(0);
 	ArrayList<String> courseList = new ArrayList<String>(0);
+	//SkillDialog skill = new SkillDialog();
 
 
 	/**
@@ -80,7 +81,7 @@ public class InitiatorInterface extends JFrame {
 				skill.setVisible(true);
 				skillList = skill.getSkills();
 				skill.dispose();
-				System.out.println(skillList.get(0)+"\n"+skillList.get(1));
+				//System.out.println(skillList.get(0)+"\n"+skillList.get(1));
 			}
 		});
 		btnSkills.setBounds(33, 78, 246, 23);
@@ -94,7 +95,7 @@ public class InitiatorInterface extends JFrame {
 				gd.setVisible(true);
 				courseList = gd.getCourses();
 				gd.dispose();
-				System.out.println(courseList.get(0)+"\n"+courseList.get(1));
+				//TestingSystem.out.println(courseList.get(0)+"\n"+courseList.get(1));
 			}
 		});
 		btnGrades.setBounds(33, 112, 246, 23);
@@ -124,29 +125,125 @@ public class InitiatorInterface extends JFrame {
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				int size =  Integer.parseInt(txtSize.getText());
-				String cid = txtCourseID.getText();
-				int day = Integer.parseInt(txtDd.getText());
-				String month="Error";
-				switch(Integer.parseInt(txtMonth.getText()))
+				//No class id input
+				if(txtCourseID.getText().equals(""))
 				{
-				case 1 :month = "January";
-				case 2 :month = "Febuary";
-				case 3 :month = "March";
-				case 4 :month = "April";
-				case 5 :month = "May";
-				case 6 :month = "June";
-				case 7 :month = "July";
-				case 8 :month = "August";
-				case 9 :month = "September";
-				case 10:month = "October";
-				case 11:month = "November";
-				case 12:month = "December";
+					ErrorInitiatorDialog error = new ErrorInitiatorDialog();
+					error.setErrorMessage("Class ID","Field is blank.");
+					error.setVisible(true);
 				}
-				
-				//ConfirmInputDialog ci = new ConfirmInputDialog();
-				//ci.setValues(day, course, month, size);
-				
+				//Group size value is not an integer or is empty
+			    else if(!ValueChecker.isInteger(txtSize.getText()))
+				{
+					ErrorInitiatorDialog error = new ErrorInitiatorDialog();
+					error.setErrorMessage("Class Size","Value is not an Integer.");
+					error.setVisible(true);
+				}
+				//Day value is not an integer or is empty
+				else if(!ValueChecker.isInteger(txtDd.getText()))
+				{
+					ErrorInitiatorDialog error = new ErrorInitiatorDialog();
+					error.setErrorMessage("Date:Days","Value is not an Integer.");
+					error.setVisible(true);
+				}
+				//Month value is not an integer or is empty
+				else if(!ValueChecker.isInteger(txtMonth.getText()))
+				{
+					ErrorInitiatorDialog error = new ErrorInitiatorDialog();
+					error.setErrorMessage("Date:Month","Value is not an Integer.");
+					error.setVisible(true);
+				}
+				//Month value is outside range
+				else if((0>=Integer.parseInt(txtMonth.getText()) || (13<=Integer.parseInt(txtMonth.getText()))))
+				{
+					ErrorInitiatorDialog error = new ErrorInitiatorDialog();
+					error.setErrorMessage("Date:Month","Value is not possible. Please enter a value between 1 and 12.");
+					error.setVisible(true);
+				}
+				//Everything is ok
+				else
+				{
+					Course course = Registry.getCourse(txtCourseID.getText());
+					int size =  Integer.parseInt(txtSize.getText());
+					System.out.println(course.size()+" "+size);
+					if(course.size()<size)
+					{
+						ErrorInitiatorDialog error = new ErrorInitiatorDialog();
+						error.setErrorMessage("Group Size","Group Size is larger than class size.");
+						error.setVisible(true);
+					}
+					else
+					{
+						String cid = course.getCRN();
+						int classSize = course.size();
+						int day = Integer.parseInt(txtDd.getText());
+						String month="Error";
+						//Sets month value
+						switch( Integer.parseInt(txtMonth.getText() ) )
+						{
+							case 1 :month = "January";
+							break;
+							case 2 :month = "Febuary";
+							break;
+							case 3 :month = "March";
+							break;
+							case 4 :month = "April";
+							break;
+							case 5 :month = "May";
+							break;
+							case 6 :month = "June";
+							break;
+							case 7 :month = "July";
+							break;
+							case 8 :month = "August";
+							break;
+							case 9 :month = "September";
+							break;
+							case 10:month = "October";
+							break;
+							case 11:month = "November";
+							break;
+							case 12:month = "December";
+							break;
+						}
+						//Asks if data is correct
+						ConfirmInputDialog ci = new ConfirmInputDialog();
+						ci.setValues(day, course, month, size,classSize);
+						ci.update();
+						ci.setVisible(true);
+						boolean correct = ci.isCorrect();
+						ci.dispose();
+						//Testing System.out.println(correct);
+						//Makes an array list to be writen to a file
+						if(correct)
+						{
+							ArrayList<String> input = new ArrayList<String>(0);
+							input.add(cid);
+							input.add(""+size);
+							input.add(month);
+							input.add(""+day);
+							input.add(":");
+							for(String s : skillList)
+							{
+								if(!s.equals(""))
+								{
+									input.add(s);
+								}
+							}
+							input.add(":");
+							for(String s:courseList)
+							{
+								if(!s.equals(""))
+								{
+									input.add(s);
+								}
+							}
+					
+							MakeFileProfReq.makeFile("files/profreqs.csv",input);
+							dispose();
+						}
+					}
+				}
 			}
 		});
 		btnContinue.setBounds(37, 177, 242, 23);

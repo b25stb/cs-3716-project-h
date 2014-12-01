@@ -82,4 +82,14 @@ public class Student
 	{
 		this.params = params;
 	}
+	
+	/*
+	 * Returns String representation of a student
+	 * 
+	 */
+	public String toString()
+	{
+		String output = name+ " " + id;
+		return output;
+	}
 }
