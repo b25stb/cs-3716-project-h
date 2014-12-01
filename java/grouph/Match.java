@@ -1,10 +1,13 @@
-//A class to simulate how we will match students to a group
+
 
 package grouph;
 
 import java.io.*;
 import java.util.*;
 
+/**
+ * A class to simulate how we will match students to a group
+ */
 
 public class Match 
 

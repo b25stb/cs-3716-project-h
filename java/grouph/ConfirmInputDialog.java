@@ -12,6 +12,10 @@ import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+	/**
+	 * The class pop a window let user to confirm the Input infomation
+	 */
+	 
 public class ConfirmInputDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
