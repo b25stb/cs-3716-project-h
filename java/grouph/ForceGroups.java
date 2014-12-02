@@ -72,6 +72,7 @@ public class ForceGroups extends JDialog {
 		return apartList;
 	}
 	
+	
 	/*
 	 * Error handler in case force Match/Apart button is clicked with no selection
 	 * @return Can force match/Apart
@@ -89,6 +90,22 @@ public class ForceGroups extends JDialog {
 		{
 			ErrorInitiatorDialog error = new ErrorInitiatorDialog();
 			error.setErrorMessage("Second student selection","No student selected.");
+			error.setVisible(true);
+			return false;
+		}
+		if(lstStuA.getSelectedIndex()==lstStuB.getSelectedIndex())
+		{
+			ErrorInitiatorDialog error = new ErrorInitiatorDialog();
+			error.setErrorMessage("Student Selection","Cannot match/separate a student to/from themselves.");
+			error.setVisible(true);
+			return false;
+		}
+		String s=lstStuA.getSelectedValue().toString()+", "+lstStuB.getSelectedValue().toString();
+		String ss=lstStuB.getSelectedValue().toString()+", "+lstStuA.getSelectedValue().toString();
+		if(matchModel.contains(s)||matchModel.contains(ss)||apartModel.contains(s)||apartModel.contains(ss))
+		{
+			ErrorInitiatorDialog error = new ErrorInitiatorDialog();
+			error.setErrorMessage("Student Selection","Not a valid match students may alredy be forced together/apart.");
 			error.setVisible(true);
 			return false;
 		}
