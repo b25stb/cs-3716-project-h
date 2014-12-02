@@ -58,7 +58,7 @@ public class Controller {
                 
 			    try {
 	        	    BufferedReader br = new BufferedReader(
-	        		    new ReadFile(chooser.getSelectedFile()));
+	        		    new FileReader(chooser.getSelectedFile()));
                 
 	           
 	        	    while ((line = br.readLine()) != null) {
