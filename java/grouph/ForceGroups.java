@@ -1,3 +1,6 @@
+/*
+ * Forces people to work together or apart
+ */
 package grouph;
 
 import java.awt.BorderLayout;
@@ -299,6 +302,6 @@ public class ForceGroups extends JDialog {
 				getRootPane().setDefaultButton(okButton);
 			}
 		}
-		addStudents(Registry.getCourse("TEST"));
+		//Tests addStudents(Registry.getCourse("TEST"));
 	}
 }

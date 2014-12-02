@@ -1,3 +1,6 @@
+/*
+ * Allows User to swap members out from two groups
+ */
 package grouph;
 
 import java.awt.BorderLayout;
@@ -17,6 +20,7 @@ import java.awt.event.ActionEvent;
 public class EditGroupUI extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
+	//Lists og group members
 	DefaultListModel<Student> groupAModel;
 	DefaultListModel<Student> groupBModel;
 	final JList<Student> lstGroupA;
@@ -175,17 +179,6 @@ public class EditGroupUI extends JDialog {
 				btnDone.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e)
 					{
-						/*
-						 //Testing
-						for(Student s:groupA.groupMems)
-						{
-							System.out.println(s.toString());
-						}
-						for(Student s:groupB.groupMems)
-						{
-							System.out.println(s.toString());
-						}
-						*/
 						setVisible(false);
 					}
 				});

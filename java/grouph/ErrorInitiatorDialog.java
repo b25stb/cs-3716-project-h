@@ -1,3 +1,6 @@
+/*
+ * Error handler for gui's
+ */
 package grouph;
 
 import java.awt.BorderLayout;

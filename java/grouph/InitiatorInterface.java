@@ -1,93 +1,86 @@
 package grouph;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.util.ArrayList;
+import java.awt.FlowLayout;
 
-import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
-public class InitiatorInterface extends JFrame {
+public class InitiatorInterface extends JDialog {
 
-	private JPanel contentPane;
+	private final JPanel contentPanel = new JPanel();
 	private JTextField txtCourseID;
 	private JTextField txtSize;
 	private JTextField txtMonth;
 	private JTextField txtDd;
 	ArrayList<String> skillList = new ArrayList<String>(0);
 	ArrayList<String> courseList = new ArrayList<String>(0);
-	//SkillDialog skill = new SkillDialog();
-
+	ArrayList<String> input;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					InitiatorInterface frame = new InitiatorInterface();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		try {
+			InitiatorInterface dialog = new InitiatorInterface();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
-	 * Create the frame.
+	 * Create the dialog.
 	 */
 	public InitiatorInterface() {
-		setTitle("Let's make some Groups");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 318, 254);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		setModal(true);
+		setBounds(100, 100, 270, 230);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
 		
-		JLabel lblEnterCourseId = new JLabel("Enter Course ID");
-		lblEnterCourseId.setBounds(37, 11, 135, 36);
-		contentPane.add(lblEnterCourseId);
+		JLabel lblEnterClassId = new JLabel("Enter Class ID");
+		lblEnterClassId.setBounds(10, 11, 80, 14);
+		contentPanel.add(lblEnterClassId);
 		
 		txtCourseID = new JTextField();
-		txtCourseID.setBounds(153, 19, 126, 20);
-		contentPane.add(txtCourseID);
+		txtCourseID.setBounds(113, 8, 136, 20);
+		contentPanel.add(txtCourseID);
 		txtCourseID.setColumns(10);
 		
-		JLabel lblEnterGroupsize = new JLabel("Enter GroupSize");
-		lblEnterGroupsize.setBounds(37, 53, 135, 14);
-		contentPane.add(lblEnterGroupsize);
+		JLabel lblEnterDesiredGroup = new JLabel("Enter group Size");
+		lblEnterDesiredGroup.setBounds(10, 42, 100, 14);
+		contentPanel.add(lblEnterDesiredGroup);
 		
 		txtSize = new JTextField();
-		txtSize.setBounds(153, 50, 126, 20);
-		contentPane.add(txtSize);
+		txtSize.setBounds(110, 39, 139, 20);
+		contentPanel.add(txtSize);
 		txtSize.setColumns(10);
 		
 		JButton btnSkills = new JButton("Enter Skills");
 		btnSkills.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
+			public void actionPerformed(ActionEvent arg0) 
 			{
 				SkillDialog skill = new SkillDialog();
 				skill.setVisible(true);
 				skillList = skill.getSkills();
 				skill.dispose();
-				//System.out.println(skillList.get(0)+"\n"+skillList.get(1));
 			}
 		});
-		btnSkills.setBounds(33, 78, 246, 23);
-		contentPane.add(btnSkills);
+		btnSkills.setBounds(10, 66, 239, 23);
+		contentPanel.add(btnSkills);
 		
-		JButton btnGrades = new JButton("Enter Courses to consider");
+		JButton btnGrades = new JButton("EnterGrades");
 		btnGrades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -95,35 +88,34 @@ public class InitiatorInterface extends JFrame {
 				gd.setVisible(true);
 				courseList = gd.getCourses();
 				gd.dispose();
-				//TestingSystem.out.println(courseList.get(0)+"\n"+courseList.get(1));
 			}
 		});
-		btnGrades.setBounds(33, 112, 246, 23);
-		contentPane.add(btnGrades);
+		btnGrades.setBounds(10, 103, 239, 23);
+		contentPanel.add(btnGrades);
 		
-		JLabel lblEnterDeadline = new JLabel("Enter Deadline");
-		lblEnterDeadline.setBounds(37, 149, 93, 14);
-		contentPane.add(lblEnterDeadline);
-		
-		txtMonth = new JTextField();
-		txtMonth.setText("MM");
-		txtMonth.setBounds(192, 146, 33, 20);
-		contentPane.add(txtMonth);
-		txtMonth.setColumns(10);
-		
-		JLabel label = new JLabel("/");
-		label.setBounds(235, 149, 9, 14);
-		contentPane.add(label);
+		JLabel lblEnterDeadline = new JLabel("Enter DeadLine");
+		lblEnterDeadline.setBounds(10, 137, 80, 14);
+		contentPanel.add(lblEnterDeadline);
 		
 		txtDd = new JTextField();
 		txtDd.setText("DD");
-		txtDd.setBounds(254, 146, 25, 20);
-		contentPane.add(txtDd);
+		txtDd.setBounds(113, 134, 31, 20);
+		contentPanel.add(txtDd);
 		txtDd.setColumns(10);
+		
+		JLabel label = new JLabel("/");
+		label.setBounds(154, 137, 14, 14);
+		contentPanel.add(label);
+		
+		txtMonth = new JTextField();
+		txtMonth.setText("MM");
+		txtMonth.setBounds(178, 134, 31, 20);
+		contentPanel.add(txtMonth);
+		txtMonth.setColumns(10);
 		
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
+			public void actionPerformed(ActionEvent e)
 			{
 				//No class id input
 				if(txtCourseID.getText().equals(""))
@@ -211,13 +203,14 @@ public class InitiatorInterface extends JFrame {
 						ci.setValues(day, course, month, size,classSize);
 						ci.update();
 						ci.setVisible(true);
+						//while(ci.isActive()){}//Wait for input
 						boolean correct = ci.isCorrect();
 						ci.dispose();
 						//Testing System.out.println(correct);
 						//Makes an array list to be writen to a file
 						if(correct)
 						{
-							ArrayList<String> input = new ArrayList<String>(0);
+							input = new ArrayList<String>(0);
 							input.add(cid);
 							input.add(""+size);
 							input.add(month);
@@ -239,14 +232,14 @@ public class InitiatorInterface extends JFrame {
 								}
 							}
 					
-							MakeFileProfReq.makeFile("files/profreqs.csv",input);
-							dispose();
+							//MakeFileProfReq.makeFile("files/profreqs.csv",input);
+							setVisible(false);
 						}
 					}
 				}
 			}
 		});
-		btnContinue.setBounds(37, 177, 242, 23);
-		contentPane.add(btnContinue);
+		btnContinue.setBounds(10, 162, 239, 23);
+		contentPanel.add(btnContinue);
 	}
 }
