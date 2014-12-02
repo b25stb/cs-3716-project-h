@@ -30,7 +30,7 @@ public class ForceGroups extends JDialog {
 	final JList<Student> lstStuB;
 	//List of forced matched students
 	DefaultListModel<String> matchModel;
-	final JList lstForced;
+	final JList<String> lstForced;
 	//List of students to keep apart
 	DefaultListModel<String> apartModel;
 	final JList<String> lstForceApart;
@@ -217,7 +217,7 @@ public class ForceGroups extends JDialog {
 		scrollPane_2.setBounds(33, 41, 293, 63);
 		panel_1.add(scrollPane_2);
 		
-		lstForced = new JList(matchModel);
+		lstForced = new JList<String>(matchModel);
 		scrollPane_2.setViewportView(lstForced);
 		
 		JButton btnRemoveForceMatch = new JButton("Remove");
@@ -229,7 +229,6 @@ public class ForceGroups extends JDialog {
 				{
 					matchList.remove(lstForced.getSelectedIndex());
 					matchModel.remove(lstForced.getSelectedIndex());
-					System.out.println(matchModel.toString());
 				}
 			}
 		});
@@ -272,7 +271,7 @@ public class ForceGroups extends JDialog {
 				boolean bool = canRemove("fa");
 				if(bool)
 				{
-					apartList.remove(lstForced.getSelectedIndex()-1);
+					apartList.remove(lstForceApart.getSelectedIndex());
 					apartModel.remove(lstForceApart.getSelectedIndex());
 				}
 			}
