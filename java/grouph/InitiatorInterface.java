@@ -99,7 +99,7 @@ public class InitiatorInterface extends JDialog {
 		
 		txtDd = new JTextField();
 		txtDd.setText("DD");
-		txtDd.setBounds(113, 134, 31, 20);
+		txtDd.setBounds(164, 134, 31, 20);
 		contentPanel.add(txtDd);
 		txtDd.setColumns(10);
 		
@@ -109,7 +109,7 @@ public class InitiatorInterface extends JDialog {
 		
 		txtMonth = new JTextField();
 		txtMonth.setText("MM");
-		txtMonth.setBounds(178, 134, 31, 20);
+		txtMonth.setBounds(113, 134, 31, 20);
 		contentPanel.add(txtMonth);
 		txtMonth.setColumns(10);
 		
@@ -152,12 +152,19 @@ public class InitiatorInterface extends JDialog {
 					error.setErrorMessage("Date:Month","Value is not possible. Please enter a value between 1 and 12.");
 					error.setVisible(true);
 				}
+				//Day value is out of range
+				else if((0>=Integer.parseInt(txtDd.getText()) || (31<=Integer.parseInt(txtDd.getText()))))
+				{
+					ErrorInitiatorDialog error = new ErrorInitiatorDialog();
+					error.setErrorMessage("Date:Day","Value is not possible. Please enter a value between 1 and 31.");
+					error.setVisible(true);
+				}
 				//Everything is ok
 				else
 				{
 					Course course = Registry.getCourse(txtCourseID.getText());
 					int size =  Integer.parseInt(txtSize.getText());
-					System.out.println(course.size()+" "+size);
+					//System.out.println(course.size()+" "+size);
 					if(course.size()<size)
 					{
 						ErrorInitiatorDialog error = new ErrorInitiatorDialog();
