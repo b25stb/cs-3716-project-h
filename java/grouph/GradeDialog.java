@@ -67,19 +67,6 @@ public class GradeDialog extends JDialog {
 					public void actionPerformed(ActionEvent e) 
 					{
 						Scanner in = new Scanner(txtCourse.getText());
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-						if(!in.hasNextLine())
-						{
-							while(cl.size()>0)
-							{
-								cl.remove(0);
-							}
-						}
->>>>>>> Shane
-=======
->>>>>>> Shane
 						while(in.hasNext())
 						{
 							cl.add(in.nextLine());

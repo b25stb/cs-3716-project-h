@@ -6,6 +6,7 @@ package grouph;
 import java.util.ArrayList;
 
 /**
+ * Takes input from the initiator and saves it so it can be used later
  * @author stb
  *
  */
@@ -19,7 +20,7 @@ public class InitiatorMain {
 		InitiatorInterface InUI = new InitiatorInterface();
 		InUI.setVisible(true);
 		ArrayList<String> profReq = InUI.input;
-		System.out.println(profReq.toString());
+		//System.out.println(profReq.toString());
 		//Simulates class
 		Course course = Registry.getCourse(profReq.get(0));
 		InUI.dispose();
