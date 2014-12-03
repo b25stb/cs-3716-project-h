@@ -42,6 +42,7 @@ public class InitiatorInterface extends JDialog {
 	 * Create the dialog.
 	 */
 	public InitiatorInterface() {
+		setTitle("Let's make some groups");
 		setModal(true);
 		setBounds(100, 100, 270, 230);
 		getContentPane().setLayout(new BorderLayout());
@@ -94,22 +95,22 @@ public class InitiatorInterface extends JDialog {
 		contentPanel.add(btnGrades);
 		
 		JLabel lblEnterDeadline = new JLabel("Enter DeadLine");
-		lblEnterDeadline.setBounds(10, 137, 80, 14);
+		lblEnterDeadline.setBounds(10, 137, 133, 14);
 		contentPanel.add(lblEnterDeadline);
 		
 		txtDd = new JTextField();
 		txtDd.setText("DD");
-		txtDd.setBounds(164, 134, 31, 20);
+		txtDd.setBounds(218, 137, 31, 20);
 		contentPanel.add(txtDd);
 		txtDd.setColumns(10);
 		
 		JLabel label = new JLabel("/");
-		label.setBounds(154, 137, 14, 14);
+		label.setBounds(194, 137, 14, 14);
 		contentPanel.add(label);
 		
 		txtMonth = new JTextField();
 		txtMonth.setText("MM");
-		txtMonth.setBounds(113, 134, 31, 20);
+		txtMonth.setBounds(153, 137, 31, 20);
 		contentPanel.add(txtMonth);
 		txtMonth.setColumns(10);
 		
