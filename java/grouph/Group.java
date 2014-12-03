@@ -137,5 +137,20 @@ public class Group
 	{
 		this.size=size;
 	}
+	public String toString()
+	{
+		String out= "Group ID "+this.id+" :";
+		int i=0;
+		for(Student s:groupMems)
+		{
+			out=out+s.toString();
+			i++;
+			if(i<groupMems.size())
+			{
+				out=out+", ";
+			}
+		}
+		return out;
+	}
 	
 }

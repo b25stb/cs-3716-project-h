@@ -11,6 +11,18 @@ import java.util.Map;
 public class Registry 
 {
 	static Course course;
+	
+	static Student findStudentByID(String id)
+	{
+		for(Student s:course.classList)
+		{
+			if(s.getId().equalsIgnoreCase(id))
+			{
+				return s;
+			}
+		}
+		return null;
+	}
 
 	static Course getCourse(String CRN)
 	{

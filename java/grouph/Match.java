@@ -1,120 +1,170 @@
-
+//A class to simulate how we will match students to a group
 
 package grouph;
 
 import java.io.*;
 import java.util.*;
 
-/**
- * A class to simulate how we will match students to a group
- */
 
 public class Match 
-
-{
-		
-	//How a student fits into a group
-        private static Controller controller = new Controller();
-		
-	//	double compatable;
-
-		Group group;
-
-		Student student;
-
-		static ArrayList<Student> stuList;
-		
-
-		public static ArrayList<Group> makeGroups(ArrayList<Student> studentList,int size){
-			//System.out.println("Check match 1");
-	
-			stuList =  studentList;
-			
-			ArrayList<Group> groupList = new ArrayList<Group>();
-			int n = stuList.size();
-			int idNum = 65;
-			String id = "";
-			int gSize = size;
-			//System.out.println(n+" "+gSize);
-			//System.out.println("Check match 1");
-			for (int x=(n / gSize); x>0; x-- ){
-				
-				id = "Group " + Character.toString((char)idNum);
-                Group grp = new Group();
-                grp.setSize(gSize);
-				for (int y=gSize-1; y>=0; y--)
-				{
-                    grp.setId(id);
-                   // System.out.println("Check match 2");
-                    //System.out.println(stuList.size());
-					//System.out.println(stuList.get(0).getName()+" "+grp.groupMems.size());
-					Student stu = stuList.remove(0);
-					
-					//System.out.println(stu.getName());
-                    grp.add(stu);
-                    //System.out.println("Check match 2");
-					//stuList.remove(y);
-                }
-				groupList.add(grp);               
-				idNum++;
-            }
-            
-			if (stuList.size() > 0){
-                int i=0;
-                while (stuList.size() != 0) { 
-                    Group grp = groupList.get(i);
-                    grp.groupMems.add(stuList.get(0));
-                    stuList.remove(0);
-                    groupList.set(i, grp);
-                    i++;
-                    }
-            }
-			return groupList;	
-		}
-
-	/*	public Match(Student s,Group g)
-
-		{
-
-		//Checks compatibility using a single rule an keeps the location of the match
-
-		compatable=Math.abs(((s.getId()+g.getId())/2.0)-((double)g.getParam()));
-
-		student=s;
-
-		group=g;
-
-	}
-
-	
-
-	double getCompatability()
-
+{	
+	//Makes a forced matched if possible
+	static boolean forceMatch(Student stuA,Student stuB,Controller con)
 	{
-
-		return compatable;
-
+		boolean matched=false;
+		for(Group g:con.getGroupList())
+		{
+			//System.out.println(g.groupMems.size());
+			if(g.isInGroup(stuA)&&!g.isFull())
+			{
+				for(Group g2:con.getGroupList())
+				{
+					if(g2.isInGroup(stuB)&&!(g==g2))
+					{
+						if((g2.groupMems.size()+g.groupMems.size())<con.getGroupSize())
+						{
+							for(Student s:g2.groupMems)
+							{
+								g.groupMems.add(s);
+							}
+							con.getGroupList().remove(g2);
+							matched=true;
+							break;
+						}
+						matched=true;
+					}
+				}
+				if(!matched)
+				{
+					g.groupMems.add(stuB);
+					matched=true;
+				}
+			}
+			else if(g.isInGroup(stuB)&&!g.isFull()&&!matched)
+			{
+				g.groupMems.add(stuA);
+				matched=true;
+			}
+		}
+		if(!matched)
+		{
+			if(con.getGroupList().size()<con.getGroupNum())
+			{
+				Group g = new Group();
+				g.groupMems.add(stuA);
+				g.groupMems.add(stuB);
+				con.getGroupList().add(g);
+				//System.out.println(g.groupMems.size());
+				matched=true;
+			}
+			else
+			{
+				for(Group g:con.getGroupList())
+				{
+					if(g.groupMems.size()-con.getGroupSize()>1&&!matched)
+					{
+						g.groupMems.add(stuA);
+						g.groupMems.add(stuB);
+						matched=true;
+					}
+				}
+				
+			}
+		}
+		return matched;
+	}
+	
+	static void startMatch(ArrayList<Student> classList,Controller con)
+	{
+		//Make sure there are no empty groups
+			Group g = new Group();
+			g.groupMems.add(classList.remove(0));
+			con.getGroupList().add(g);
+	}
+	
+	//Cheezey way to match students based on skills and schedule// didn't work out schedule
+	static boolean matchSkills(Student stu, Controller con)
+	{
+		{
+			for(Group g:con.getGroupList())
+			{
+				int skill=0;
+				for(Student s:g.groupMems)
+				{
+					skill=+s.getProperties().getSkillValue();
+				}
+				skill=skill/g.groupMems.size();
+				if(!(g.groupMems.size()==con.getGroupSize())&&Math.abs(skill-stu.getProperties().getSkillValue())<2)
+				{
+				    g.groupMems.add(stu);
+				    return true;
+				}
+			}
+			
+		}
+		return false;
+	}
+	
+	static void matchRest(Student stu, Controller con)
+	{
+		for(Group g:con.getGroupList())
+		{
+			if(!(g.groupMems.size()==con.getGroupSize()))
+			{
+				g.groupMems.add(stu);
+				break;
+			}
+		}
+	}
+	
+	/*
+	
+	static boolean matchDesired(Student stuA,Student stuB,Controller con)
+	{
+		if(stuA.getProperties().getDesiredMatches().contains(stuB) && stuB.getProperties().getDesiredMatches().contains(stuA))
+		{
+			//Check to see if match is allowed
+			if(con.areForcedApart(stuA,stuB))
+			{}
+			else
+			{
+				//If both desire to be matched
+				if(stuA.getProperties().getDesiredMatches().contains(stuB)&&stuB.getProperties().getDesiredMatches().contains(stuA))
+				{
+					boolean matched=false;
+					for(Group g: con.getGroupList())
+					{
+						if(g.isInGroup(stuA)&&!g.isFull())
+						{
+							g.add(stuB);
+							matched=true;
+						}
+						else if(g.isInGroup(stuB)&&!g.isFull())
+						{
+							g.add(stuA);
+							matched=true;
+						}
+					}
+					if(!matched)
+					{
+						if(con.getGroupList().size()<con.getNumberOfGroups())
+						{
+							Group g = new Group();
+							g.groupMems.add(stuA);
+							g.groupMems.add(stuB);
+							con.getGroupList().add(g);
+							matched=true;
+						}
+					}
+					return matched;	
+				}
+				
+			}
+		}
+		return false;
 	}
 	*/
 	
-
-	Student getStudent()
-
-	{
-
-		return student;
-
-	}
-
 	
-
-	Group getGroup()
-
-	{
-
-		return group;
-
-	}
-
 }
 

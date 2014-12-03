@@ -252,15 +252,15 @@ public class ForceGroups extends JDialog {
 				}
 			}
 		});
-		btnRemoveForceMatch.setBounds(336, 41, 84, 65);
+		btnRemoveForceMatch.setBounds(336, 41, 94, 65);
 		panel_1.add(btnRemoveForceMatch);
 		
 		JLabel lblThisIsA = new JLabel("This is a list of forced matched students. You can remove them by");
-		lblThisIsA.setBounds(33, 0, 410, 14);
+		lblThisIsA.setBounds(10, 0, 433, 14);
 		panel_1.add(lblThisIsA);
 		
 		JLabel lblAndClickingRemove = new JLabel("selecting them and Clicking Remove.");
-		lblAndClickingRemove.setBounds(33, 16, 338, 14);
+		lblAndClickingRemove.setBounds(10, 16, 361, 14);
 		panel_1.add(lblAndClickingRemove);
 		
 		JPanel panel_3 = new JPanel();
@@ -277,11 +277,11 @@ public class ForceGroups extends JDialog {
 		scrollPane_5.setViewportView(lstForceApart);
 		
 		JLabel lblThisIsA_1 = new JLabel("This is a list of students bring forced apart. You can remove them by");
-		lblThisIsA_1.setBounds(24, 0, 396, 14);
+		lblThisIsA_1.setBounds(10, 0, 410, 14);
 		panel_3.add(lblThisIsA_1);
 		
 		JLabel lblSelectingThemAnd = new JLabel("selecting them and Clicking remove");
-		lblSelectingThemAnd.setBounds(27, 16, 326, 14);
+		lblSelectingThemAnd.setBounds(20, 16, 333, 14);
 		panel_3.add(lblSelectingThemAnd);
 		
 		JButton btnRemoveForceApart = new JButton("Remove");
@@ -296,7 +296,7 @@ public class ForceGroups extends JDialog {
 				}
 			}
 		});
-		btnRemoveForceApart.setBounds(336, 41, 84, 65);
+		btnRemoveForceApart.setBounds(336, 41, 94, 65);
 		panel_3.add(btnRemoveForceApart);
 		
 		JLabel lblForceMatchStudents = new JLabel("Force match Students");

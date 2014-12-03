@@ -5,6 +5,7 @@ package grouph;
 
 import java.util.ArrayList;
 
+
 /**
  * Takes input from the initiator and saves it so it can be used later
  * @author stb
@@ -15,8 +16,7 @@ public class InitiatorMain {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) 
-	{
+	public static void main(String[] args) {
 		InitiatorInterface InUI = new InitiatorInterface();
 		InUI.setVisible(true);
 		ArrayList<String> profReq = InUI.input;

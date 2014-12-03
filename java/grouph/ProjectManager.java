@@ -13,25 +13,26 @@ import java.util.GregorianCalendar;
  */
 public class ProjectManager 
 {
-	GregorianCalendar deadline;
+	//GregorianCalendar deadline;
+	String[] deadline = new String[2];
 	ArrayList<Student[]> forceMatch,forceApart;
 	Course course;
 	int size;
-	ArrayList<Course> marks;
+	ArrayList<String> marks;
 	
 	//Creates a blank project manager
 	public ProjectManager()
 	{
 		forceMatch = new ArrayList<Student[]>(0);
 		forceApart = new ArrayList<Student[]>(0);
-		marks = new ArrayList<Course>(0);
+		marks = new ArrayList<String>(0);
 	}
 	
 	/*
 	 * Gets a list of important marks
 	 * @return The list of important marks
 	 */
-	ArrayList<Course> getReqMarks()
+	ArrayList<String> getReqMarks()
 	{
 		return marks;
 	}
@@ -40,7 +41,7 @@ public class ProjectManager
 	 * Adds a reqired Course to list of important grades
 	 * @param course The course being added
 	 */
-	void addMark(Course course)
+	void addMark(String course)
 	{
 		marks.add(course);
 	}
@@ -48,7 +49,7 @@ public class ProjectManager
 	/*
 	 * Removes a course from list of important courses
 	 */
-	void removeMark(Course course)
+	void removeMark(String course)
 	{
 		if(marks.contains(course))
 		{
@@ -77,7 +78,7 @@ public class ProjectManager
 	 * Gets the deadline for students to enter data
 	 * @return The deadline for entries
 	 */
-	GregorianCalendar getDeadline()
+	String[] getDeadline()
 	{
 		return deadline;
 	}
@@ -86,7 +87,7 @@ public class ProjectManager
 	 * Sets the date for the deadline
 	 * @param deadline The new deadline
 	 */
-	void setDeadline(GregorianCalendar deadline)
+	void setDeadline(String[] deadline)
 	{
 		this.deadline = deadline;
 	}
