@@ -25,6 +25,11 @@ public class Registry
 				stu.name="Student "+String.valueOf(ch);
 				stu.id = "id#"+id;
 				students.add(stu);
+<<<<<<< HEAD
+=======
+				id++;
+				ch++;
+>>>>>>> Shane
 			}
 			course.classList.addAll(students);
 			course.CRN=CRN;

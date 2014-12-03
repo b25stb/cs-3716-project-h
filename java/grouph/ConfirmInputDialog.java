@@ -8,6 +8,9 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Shane
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
@@ -25,12 +28,18 @@ public class ConfirmInputDialog extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	String month="";
 <<<<<<< HEAD
+<<<<<<< HEAD
 	int day,size,classSize;
 	Course course;
 	//InitiatorInterface ui;
 =======
 	int day,size;
 	Course course;
+>>>>>>> Shane
+=======
+	int day,size,classSize;
+	Course course;
+	//InitiatorInterface ui;
 >>>>>>> Shane
 
 	/**
@@ -51,6 +60,9 @@ public class ConfirmInputDialog extends JDialog {
 	 */
 	boolean correct=false;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Shane
 	JTextArea txtConfirmArea = new JTextArea();
 	
 	boolean isCorrect()
@@ -69,11 +81,16 @@ public class ConfirmInputDialog extends JDialog {
 	}
 	
 	void setValues(int d,Course c,String m,int s,int cS)
+<<<<<<< HEAD
 	{
 		classSize=cS;
 =======
 	void setValues(int d,Course c,String m,int s)
 	{
+>>>>>>> Shane
+=======
+	{
+		classSize=cS;
 >>>>>>> Shane
 		month=m;
 		course=c;
@@ -82,6 +99,7 @@ public class ConfirmInputDialog extends JDialog {
 	}
 	
 	public ConfirmInputDialog() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 		setTitle("Confirm Details");
 		setModal(true);
@@ -103,12 +121,30 @@ public class ConfirmInputDialog extends JDialog {
 
 		}
 =======
+=======
+		setTitle("Confirm Details");
+>>>>>>> Shane
 		setModal(true);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 328, 300);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setLayout(new FlowLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
+<<<<<<< HEAD
+>>>>>>> Shane
+=======
+		contentPanel.setLayout(null);
+		{
+			JLabel lblPleaseConfirmThe = new JLabel("Please confirm The details you have entered.");
+			lblPleaseConfirmThe.setBounds(22, 11, 217, 14);
+			contentPanel.add(lblPleaseConfirmThe);
+		}
+		{
+			//JTextArea txtConfirmArea = new JTextArea();
+			txtConfirmArea.setEditable(false);
+			txtConfirmArea.setBounds(10, 30, 292, 162);
+			contentPanel.add(txtConfirmArea);
+
+		}
 >>>>>>> Shane
 		{
 			JPanel buttonPane = new JPanel();
@@ -117,6 +153,9 @@ public class ConfirmInputDialog extends JDialog {
 			{
 				JButton okButton = new JButton("OK");
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Shane
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) 
 					{
@@ -124,6 +163,9 @@ public class ConfirmInputDialog extends JDialog {
 						setVisible(false);
 					}
 				});
+<<<<<<< HEAD
+=======
+>>>>>>> Shane
 =======
 >>>>>>> Shane
 				okButton.setActionCommand("OK");
@@ -133,6 +175,9 @@ public class ConfirmInputDialog extends JDialog {
 			{
 				JButton cancelButton = new JButton("Cancel");
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Shane
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) 
 					{
@@ -140,6 +185,9 @@ public class ConfirmInputDialog extends JDialog {
 						dispose();
 					}
 				});
+<<<<<<< HEAD
+=======
+>>>>>>> Shane
 =======
 >>>>>>> Shane
 				cancelButton.setActionCommand("Cancel");

@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class Group 
 {
 	//Max size of a group
-	private Controller controller = new Controller();
-	int size = controller.groupSize;
+	//private Controller controller = new Controller();
+	int size ;//= controller.groupSize;
 	//The group that will hold students
 	public ArrayList<Student> groupMems;
 	//The id for the group
@@ -84,6 +84,7 @@ public class Group
 	 * This Will return an arraylist of the members in a group
 	 * @return The group
 	 */
+<<<<<<< HEAD
 	public Group getGroup( String id ) {
 		for( int x = controller.groupList.size(); x == 0; x-- ){
 			Group grp = (controller.groupList.get(x));
@@ -95,6 +96,17 @@ public class Group
 		
 		return null;
 	}
+=======
+	//public Group getGroup(String id)
+	//{
+		//for ( int x = controller.groupList.size(); x==0; x--){			Group grp = (controller.groupList.get(x));
+			//if(grp.id==id){
+			//	return grp;
+			//}
+		//}
+	//return null;
+	//}
+>>>>>>> Shane
 	/*
 	 * Sets the id of a group
 	 * @param id The new id for the group

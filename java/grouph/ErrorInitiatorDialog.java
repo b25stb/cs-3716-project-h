@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+/*
+ * Error handler for gui's
+ */
+>>>>>>> Shane
 package grouph;
 
 import java.awt.BorderLayout;
