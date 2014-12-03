@@ -3,6 +3,7 @@
  */
 package grouph;
 
+
 /**
  * Creates a student that will be added to a group
  * @author stb

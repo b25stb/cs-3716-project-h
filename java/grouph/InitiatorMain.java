@@ -17,6 +17,7 @@ public class InitiatorMain {
 	 */
 	public static void main(String[] args) 
 	{
+		Controller con = new Controller();
 		InitiatorInterface InUI = new InitiatorInterface();
 		InUI.setVisible(true);
 		ArrayList<String> profReq = InUI.input;
@@ -69,7 +70,7 @@ public class InitiatorMain {
 		{
 			profReq.add(s);
 		}
-		MakeFileProfReq.makeFile("files/profreqs.csv",profReq);
+		con.makeFile("files/profreqs.csv",profReq);
 	}
 
 }

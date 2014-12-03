@@ -24,6 +24,7 @@ public class InitiatorInterface extends JDialog {
 	ArrayList<String> skillList = new ArrayList<String>(0);
 	ArrayList<String> courseList = new ArrayList<String>(0);
 	ArrayList<String> input;
+	Controller con = new Controller();
 
 	/**
 	 * Launch the application.
@@ -221,7 +222,7 @@ public class InitiatorInterface extends JDialog {
 							input = new ArrayList<String>(0);
 							input.add(cid);
 							input.add(""+size);
-							input.add(month);
+							input.add(txtMonth.getText());
 							input.add(""+day);
 							input.add(":");
 							for(String s : skillList)
